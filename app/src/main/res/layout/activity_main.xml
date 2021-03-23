@@ -32,7 +32,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/calculate"
-        android:textSize="36sp" />
+        android:textSize="36sp"
+        android:onClick="calculateButtonClicked"/>
 
     <TextView
         android:id="@+id/totalPerPerson"
@@ -40,5 +41,6 @@
         android:layout_height="match_parent"
         android:text="@string/total_per_person"
         android:textSize="36sp" />
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>
