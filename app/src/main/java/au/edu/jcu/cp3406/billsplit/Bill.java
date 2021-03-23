@@ -16,6 +16,10 @@ public class Bill {
         totalPerPerson = total / numberOfPeople;
     }
 
+    public void resetBill() {
+        total = numberOfPeople = totalPerPerson = 0;
+    }
+
     public String toString() {
         DecimalFormat df = new DecimalFormat("#.00");
         String totalAsString = df.format(totalPerPerson);

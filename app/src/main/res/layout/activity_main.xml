@@ -16,7 +16,8 @@
         android:id="@+id/billAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter bill amount"
+        android:hint="@string/enter_bill_amount"
+        android:importantForAutofill="no"
         android:inputType="number"
         android:textSize="36sp" />
 
@@ -24,16 +25,25 @@
         android:id="@+id/numberOfPeople"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Number of people"
+        android:hint="@string/number_of_people"
+        android:importantForAutofill="no"
+        android:inputType="number"
         android:textSize="36sp" />
 
     <Button
         android:id="@+id/calculateButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="calculateButtonClicked"
         android:text="@string/calculate"
-        android:textSize="36sp"
-        android:onClick="calculateButtonClicked"/>
+        android:textSize="36sp" />
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/reset"
+        android:textSize="36sp" />
 
     <TextView
         android:id="@+id/totalPerPerson"

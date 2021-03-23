@@ -12,4 +12,11 @@ public class BillTests {
         bill.calculateTotalPerPerson();
         assertEquals("$33.33", bill.toString());
     }
+
+    @Test
+    public void testReset() {
+        Bill bill = new Bill(50, 2);
+        bill.resetBill();
+        assertEquals("$0.00", bill.toString());
+    }
 }
