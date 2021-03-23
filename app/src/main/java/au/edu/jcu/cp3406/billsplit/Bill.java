@@ -3,21 +3,24 @@ package au.edu.jcu.cp3406.billsplit;
 import java.text.DecimalFormat;
 
 public class Bill {
-    private float total;
+    private float amount;
     private float numberOfPeople;
     private float totalPerPerson;
 
-    public Bill(int total, int numberOfPeople) {
-        this.total = total;
+    public void setAmount(float amount) {
+        this.amount = amount;
+    }
+
+    public void setNumberOfPeople(float numberOfPeople) {
         this.numberOfPeople = numberOfPeople;
     }
 
     public void calculateTotalPerPerson() {
-        totalPerPerson = total / numberOfPeople;
+        totalPerPerson = amount / numberOfPeople;
     }
 
     public void resetBill() {
-        total = numberOfPeople = totalPerPerson = 0;
+        amount = numberOfPeople = totalPerPerson = 0;
     }
 
     public String toString() {

@@ -22,11 +22,13 @@ public class BillSplitMainActivity extends AppCompatActivity {
         billAmount = findViewById(R.id.billAmount);
         numberOfPeople = findViewById(R.id.numberOfPeople);
         totalPerPersonView = findViewById(R.id.totalPerPerson);
+        bill = new Bill();
 
     }
 
     public void resetButtonClicked(View view) {
-        //TODO
+        billAmount.setText("");
+        numberOfPeople.setText("");
         bill.resetBill();
     }
 
@@ -36,8 +38,9 @@ public class BillSplitMainActivity extends AppCompatActivity {
         int amount = Integer.parseInt(billAmount.getText().toString());
         int people = Integer.parseInt(numberOfPeople.getText().toString());
 
-        // Create a Bill object
-        Bill bill = new Bill(amount, people);
+        // Update the Bill object values
+        bill.setAmount(amount);
+        bill.setNumberOfPeople(people);
 
         bill.calculateTotalPerPerson();
         totalPerPersonView.setText(bill.toString());
