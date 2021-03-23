@@ -44,6 +44,7 @@ public class BillSplitMainActivity extends AppCompatActivity {
         bill.setNumberOfPeople(people);
 
         bill.calculateTotalPerPerson();
-        totalPerPersonView.setText(bill.toString());
+        String perPersonString = bill.toString() + " per person";
+        totalPerPersonView.setText(perPersonString);
     }
 }
