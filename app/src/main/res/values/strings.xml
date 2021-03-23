@@ -6,4 +6,7 @@
     <string name="reset">Reset</string>
     <string name="enter_bill_amount">Enter bill amount</string>
     <string name="number_of_people">Number of people</string>
+    <string name="settings">Settings</string>
+    <string name="include_tip">Include Tip</string>
+    <string name="tip_amount">Tip Amount</string>
 </resources>
