@@ -24,8 +24,14 @@ public class Bill {
     }
 
     public String toString() {
-        DecimalFormat df = new DecimalFormat("#.00");
-        String totalAsString = df.format(totalPerPerson);
+        String totalAsString;
+        if (totalPerPerson > 0) {
+            DecimalFormat df = new DecimalFormat("#.00");
+            totalAsString = df.format(totalPerPerson);
+        } else {
+            totalAsString = "0.00";
+        }
+
         return "$" + totalAsString;
     }
 

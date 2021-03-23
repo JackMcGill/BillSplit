@@ -21,6 +21,6 @@ public class BillTests {
         bill.setAmount(50);
         bill.setNumberOfPeople(2);
         bill.resetBill();
-        assertEquals("$.00", bill.toString());
+        assertEquals("$0.00", bill.toString());
     }
 }

@@ -27,9 +27,10 @@ public class BillSplitMainActivity extends AppCompatActivity {
     }
 
     public void resetButtonClicked(View view) {
+        bill.resetBill();
         billAmount.setText("");
         numberOfPeople.setText("");
-        bill.resetBill();
+        totalPerPersonView.setText(bill.toString());
     }
 
     public void calculateButtonClicked(View view) {
