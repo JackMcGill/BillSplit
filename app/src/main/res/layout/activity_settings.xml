@@ -29,44 +29,47 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tip_percentage"
             android:paddingLeft="20dp"
+            android:text="@string/tip_percentage"
             android:textSize="26sp" />
 
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/radioButton10perCent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="radioButtonClicked"
                 android:text="@string/_10"
                 android:textSize="26sp" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/radioButton20perCent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="radioButtonClicked"
                 android:text="@string/_20"
                 android:textSize="26sp" />
 
             <RadioButton
-                android:id="@+id/radioButton3"
+                android:id="@+id/radioButton25perCent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="radioButtonClicked"
                 android:text="@string/_25"
                 android:textSize="26sp" />
 
             <RadioButton
-                android:id="@+id/radioButton4"
+                android:id="@+id/radioButton0perCent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="0%"
-                android:textSize="26sp"
-                android:checked="true"/>
+                android:onClick="radioButtonClicked"
+                android:text="@string/_0"
+                android:textSize="26sp" />
         </RadioGroup>
 
     </LinearLayout>
