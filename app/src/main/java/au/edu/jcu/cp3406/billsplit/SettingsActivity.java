@@ -1,9 +1,11 @@
 package au.edu.jcu.cp3406.billsplit;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Switch;
 
@@ -11,7 +13,9 @@ public class SettingsActivity extends AppCompatActivity {
 
     public static int SETTINGS_REQUEST = 7;
     private int tipAmount;
-    private Switch tipSwitch;
+    private boolean isTipping;
+    private SwitchCompat tipSwitch;
+    private LinearLayout tipLinearLayout;
     private RadioButton[] tipButtons;
 
     @Override
@@ -19,12 +23,32 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        tipSwitch = findViewById(R.id.tipSwitch);
+        tipLinearLayout = findViewById(R.id.tipLinearLayout);
+
         tipButtons = new RadioButton[4];
         tipButtons[0] = findViewById(R.id.radioButton10perCent);
         tipButtons[1] = findViewById(R.id.radioButton20perCent);
         tipButtons[2] = findViewById(R.id.radioButton25perCent);
         tipButtons[3] = findViewById(R.id.radioButton0perCent);
+    }
 
+    public void tipSwitchClicked(View view) {
+        if (tipSwitch.isChecked()) {
+            tipLinearLayout.setAlpha(1);
+            isTipping = true;
+            toggleRadioButtons(true);
+        } else {
+            tipLinearLayout.setAlpha((float) 0.3);
+            isTipping = false;
+            toggleRadioButtons(false);
+        }
+    }
+
+    public void toggleRadioButtons(boolean isSwitched) {
+        for (RadioButton button : tipButtons) {
+            button.setEnabled(isSwitched);
+        }
     }
 
     public void radioButtonClicked(View view) {
@@ -38,6 +62,4 @@ public class SettingsActivity extends AppCompatActivity {
             }
         }
     }
-
-
 }
