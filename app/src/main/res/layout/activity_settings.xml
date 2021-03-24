@@ -21,10 +21,10 @@
         android:textSize="26sp" />
 
     <EditText
-        android:id="@+id/tipAmount"
+        android:id="@+id/tipPercentage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/tip_amount"
+        android:hint="@string/tip_percentage"
         android:importantForAutofill="no"
         android:inputType="number"
         android:paddingLeft="20dp"
