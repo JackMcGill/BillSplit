@@ -68,7 +68,6 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void doneButtonClicked(View view) {
         if (isTipping) {
-            //TODO
             Intent data = new Intent();
             data.putExtra("tipAmount", tipAmount);
             setResult(RESULT_OK, data);

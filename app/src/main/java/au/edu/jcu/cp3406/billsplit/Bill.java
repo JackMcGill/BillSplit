@@ -15,8 +15,12 @@ public class Bill {
         this.numberOfPeople = numberOfPeople;
     }
 
-    public void calculateTotalPerPerson() {
-        totalPerPerson = amount / numberOfPeople;
+    public void calculateTotalPerPerson(int tip) {
+        float totalWithoutTip = amount / numberOfPeople;
+
+        float tipAmount = totalWithoutTip / 100 * tip;
+
+        totalPerPerson = totalWithoutTip + tipAmount;
     }
 
     public void resetBill() {
