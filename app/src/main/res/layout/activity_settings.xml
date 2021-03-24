@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SettingsActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settings"
+        android:textSize="50sp" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/tipSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="tipSwitchClicked"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/include_tip"
+        android:textSize="26sp" />
+
+    <LinearLayout
+        android:id="@+id/tipLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.3"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/tip_percentage"
+            android:textSize="26sp" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButton10perCent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:onClick="radioButtonClicked"
+                android:text="@string/_10"
+                android:textSize="26sp" />
+
+            <RadioButton
+                android:id="@+id/radioButton20perCent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:onClick="radioButtonClicked"
+                android:text="@string/_20"
+                android:textSize="26sp" />
+
+            <RadioButton
+                android:id="@+id/radioButton25perCent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:onClick="radioButtonClicked"
+                android:text="@string/_25"
+                android:textSize="26sp" />
+
+            <RadioButton
+                android:id="@+id/radioButton0perCent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:onClick="radioButtonClicked"
+                android:text="@string/_0"
+                android:textSize="26sp" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/doneButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="doneButtonClicked"
+            android:text="@string/done"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

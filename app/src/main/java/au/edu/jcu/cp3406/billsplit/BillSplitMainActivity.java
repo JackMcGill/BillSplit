@@ -2,6 +2,7 @@ package au.edu.jcu.cp3406.billsplit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -24,6 +25,11 @@ public class BillSplitMainActivity extends AppCompatActivity {
         totalPerPersonView = findViewById(R.id.totalPerPerson);
         bill = new Bill();
 
+    }
+
+    public void settingsClicked(View view) {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivityForResult(intent, SettingsActivity.SETTINGS_REQUEST);
     }
 
     public void resetButtonClicked(View view) {
