@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 public class SettingsActivity extends AppCompatActivity {
 
+    public static int SETTINGS_REQUEST = 7;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
