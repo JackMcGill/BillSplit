@@ -3,6 +3,7 @@ package au.edu.jcu.cp3406.billsplit;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -51,6 +52,8 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+    //TODO
+    // Remove 0% from tip choices as it is irrelevant (tip switch does the same thing)
     public void radioButtonClicked(View view) {
         for (RadioButton button : tipButtons) {
             if (button.isChecked()) {
@@ -60,6 +63,18 @@ public class SettingsActivity extends AppCompatActivity {
                 buttonAsString = buttonAsString.substring(0, buttonAsString.length() - 1);
                 tipAmount = Integer.parseInt(buttonAsString);
             }
+        }
+    }
+
+    public void doneButtonClicked(View view) {
+        if (isTipping) {
+            //TODO
+            Intent data = new Intent();
+            data.putExtra("tipAmount", tipAmount);
+            setResult(RESULT_OK, data);
+            finish();
+        } else {
+            finish();
         }
     }
 }
