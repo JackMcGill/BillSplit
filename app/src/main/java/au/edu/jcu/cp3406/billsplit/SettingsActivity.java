@@ -1,5 +1,6 @@
 package au.edu.jcu.cp3406.billsplit;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -26,11 +28,34 @@ public class SettingsActivity extends AppCompatActivity {
         tipSwitch = findViewById(R.id.tipSwitch);
         tipLinearLayout = findViewById(R.id.tipLinearLayout);
 
+        tipAmount = getIntent().getIntExtra("tipAmount", 0);
+
         tipButtons = new RadioButton[4];
         tipButtons[0] = findViewById(R.id.radioButton10perCent);
         tipButtons[1] = findViewById(R.id.radioButton15perCent);
         tipButtons[2] = findViewById(R.id.radioButton20perCent);
         tipButtons[3] = findViewById(R.id.radioButton25perCent);
+
+        updateSwitches();
+    }
+
+    public void updateSwitches() {
+        if (tipAmount > 0) {
+            isTipping = true;
+            tipSwitch.setChecked(true);
+            tipLinearLayout.setAlpha(1);
+            for (RadioButton button : tipButtons) {
+                button.setEnabled(true);
+
+                String buttonAsString = button.getText().toString();
+                // Remove '%' from string to extract the tip amount as an integer
+                buttonAsString = buttonAsString.substring(0, buttonAsString.length() - 1);
+
+                if (Integer.parseInt(buttonAsString) == tipAmount) {
+                    button.setChecked(true);
+                }
+            }
+        }
     }
 
     public void tipSwitchClicked(View view) {
@@ -64,11 +89,10 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void doneButtonClicked(View view) {
-        if (isTipping) {
-            Intent data = new Intent();
-            data.putExtra("tipAmount", tipAmount);
-            setResult(RESULT_OK, data);
-        }
+        Intent data = new Intent();
+        data.putExtra("tipAmount", tipAmount);
+        data.putExtra("isTipping", isTipping);
+        setResult(RESULT_OK, data);
         finish();
     }
 }

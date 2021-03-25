@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -34,7 +33,7 @@ public class BillSplitMainActivity extends AppCompatActivity {
         numberOfPeople = findViewById(R.id.numberOfPeople);
         totalPerPersonView = findViewById(R.id.totalPerPerson);
 
-        tipAmount = 0; // default value
+        tipAmount = 0; // Calculating a tip is disabled by default
 
         if (savedInstanceState == null) {
             bill = new Bill();
@@ -66,9 +65,16 @@ public class BillSplitMainActivity extends AppCompatActivity {
         if (requestCode == SettingsActivity.SETTINGS_REQUEST) {
             if (resultCode == RESULT_OK) {
                 if (data != null) {
-                    tipAmount = data.getIntExtra("tipAmount", 0);
-                    toast = Toast.makeText(this, "Tip amount has been set to " +
-                            tipAmount + "%", Toast.LENGTH_LONG);
+                    boolean isTipping = data.getBooleanExtra("isTipping", false);
+                    if (isTipping) {
+                        tipAmount = data.getIntExtra("tipAmount", 0);
+                        toast = Toast.makeText(this, "Tip amount has been set to " +
+                                tipAmount + "%", Toast.LENGTH_LONG);
+                    } else {
+                        tipAmount = 0;
+                        toast = Toast.makeText(this, "No tip was set", Toast.LENGTH_LONG);
+                    }
+
                     toast.show();
                 }
             }
@@ -77,6 +83,7 @@ public class BillSplitMainActivity extends AppCompatActivity {
 
     public void settingsClicked(View view) {
         Intent intent = new Intent(this, SettingsActivity.class);
+        intent.putExtra("tipAmount", tipAmount);
         startActivityForResult(intent, SettingsActivity.SETTINGS_REQUEST);
     }
 
