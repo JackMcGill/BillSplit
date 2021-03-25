@@ -10,6 +10,7 @@ import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.MessageFormat;
 
@@ -22,6 +23,7 @@ public class BillSplitMainActivity extends AppCompatActivity {
     private int amount;
     private int people;
     private int tipAmount;
+    private Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +42,17 @@ public class BillSplitMainActivity extends AppCompatActivity {
             amount = savedInstanceState.getInt("amount");
             people = savedInstanceState.getInt("people");
             tipAmount = savedInstanceState.getInt("tipAmount");
+            totalPerPersonView.setText(savedInstanceState.getString("totalPerPerson"));
         }
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("amount", amount);
         outState.putInt("people", people);
         outState.putInt("tipAmount", tipAmount);
+        outState.putString("totalPerPerson", totalPerPersonView.getText().toString());
     }
 
     @Override
@@ -57,8 +61,11 @@ public class BillSplitMainActivity extends AppCompatActivity {
 
         if (requestCode == SettingsActivity.SETTINGS_REQUEST) {
             if (resultCode == RESULT_OK) {
-                if (data!=null) {
+                if (data != null) {
                     tipAmount = data.getIntExtra("tipAmount", 0);
+                    toast = Toast.makeText(this, "Tip amount has been set to " +
+                            tipAmount + "%", Toast.LENGTH_LONG);
+                    toast.show();
                 }
             }
         }
@@ -78,24 +85,31 @@ public class BillSplitMainActivity extends AppCompatActivity {
 
     public void calculateButtonClicked(View view) {
 
-        // Get user input from UI
-        amount = Integer.parseInt(billAmount.getText().toString());
-        people = Integer.parseInt(numberOfPeople.getText().toString());
+        if (!billAmount.getText().toString().isEmpty()) {
+            // Get user input from UI
+            amount = Integer.parseInt(billAmount.getText().toString());
+            people = Integer.parseInt(numberOfPeople.getText().toString());
 
-        // Update the Bill object values
-        bill.setAmount(amount);
-        bill.setNumberOfPeople(people);
+            // Update the Bill object values
+            bill.setAmount(amount);
+            bill.setNumberOfPeople(people);
 
-        bill.calculateTotalPerPerson(tipAmount);
-        String perPersonString = bill.toString();
-        String output;
+            bill.calculateTotalPerPerson(tipAmount);
+            String perPersonString = bill.toString();
+            String output;
 
-        if (tipAmount > 0) {
-            output = MessageFormat.format("{0}/ person (includes {1}% tip)", perPersonString, tipAmount);
+            if (tipAmount > 0) {
+                output = MessageFormat.format("{0}/ person (includes {1}% tip)",
+                        perPersonString, tipAmount);
+            } else {
+                output = perPersonString + "/ person";
+            }
+            totalPerPersonView.setText(output);
+
         } else {
-            output = perPersonString + "/ person";
+            toast = Toast.makeText(this, "Please enter an amount and number of " +
+                    "people", Toast.LENGTH_LONG);
+            toast.show();
         }
-
-        totalPerPersonView.setText(output);
     }
 }
