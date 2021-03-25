@@ -42,6 +42,10 @@ public class BillSplitMainActivity extends AppCompatActivity {
             amount = savedInstanceState.getInt("amount");
             people = savedInstanceState.getInt("people");
             tipAmount = savedInstanceState.getInt("tipAmount");
+            bill = new Bill();
+
+            billAmount.setText(Integer.toString(amount));
+            numberOfPeople.setText(Integer.toString(people));
             totalPerPersonView.setText(savedInstanceState.getString("totalPerPerson"));
         }
     }
