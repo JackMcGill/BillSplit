@@ -8,11 +8,20 @@ public class BillTests {
 
     @Test
     public void testStringAndCalculation() {
-        Bill bill = new Bill();
-        bill.setAmount(100);
-        bill.setNumberOfPeople(3);
-        bill.calculateTotalPerPerson();
-        assertEquals("$33.33", bill.toString());
+        Bill billWithNoTip = new Bill();
+        int tip = 0;
+        billWithNoTip.setAmount(100);
+        billWithNoTip.setNumberOfPeople(3);
+        billWithNoTip.calculateTotalPerPerson(tip);
+        assertEquals("$33.33", billWithNoTip.toString());
+
+        Bill billWithTip = new Bill();
+        tip = 20;
+        billWithTip.setAmount(100);
+        billWithTip.setNumberOfPeople(2);
+        billWithTip.calculateTotalPerPerson(tip);
+        assertEquals("$60.00", billWithTip.toString());
+
     }
 
     @Test
