@@ -10,9 +10,9 @@
     <string name="include_tip">Include Tip</string>
     <string name="tip_percentage">Tip Percentage</string>
     <string name="_10">10%</string>
+    <string name="_15">15%</string>
     <string name="_20">20%</string>
     <string name="_25">25%</string>
-    <string name="_0">0%</string>
     <string name="done">Done</string>
     <string name="per_person"> per person</string>
 </resources>

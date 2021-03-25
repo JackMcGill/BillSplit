@@ -54,6 +54,15 @@
                 android:textSize="26sp" />
 
             <RadioButton
+                android:id="@+id/radioButton15perCent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:onClick="radioButtonClicked"
+                android:text="@string/_15"
+                android:textSize="26sp" />
+
+            <RadioButton
                 android:id="@+id/radioButton20perCent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -71,14 +80,6 @@
                 android:text="@string/_25"
                 android:textSize="26sp" />
 
-            <RadioButton
-                android:id="@+id/radioButton0perCent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:enabled="false"
-                android:onClick="radioButtonClicked"
-                android:text="@string/_0"
-                android:textSize="26sp" />
         </RadioGroup>
 
     </LinearLayout>

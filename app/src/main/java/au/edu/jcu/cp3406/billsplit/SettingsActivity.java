@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.Switch;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -29,9 +28,9 @@ public class SettingsActivity extends AppCompatActivity {
 
         tipButtons = new RadioButton[4];
         tipButtons[0] = findViewById(R.id.radioButton10perCent);
-        tipButtons[1] = findViewById(R.id.radioButton20perCent);
-        tipButtons[2] = findViewById(R.id.radioButton25perCent);
-        tipButtons[3] = findViewById(R.id.radioButton0perCent);
+        tipButtons[1] = findViewById(R.id.radioButton15perCent);
+        tipButtons[2] = findViewById(R.id.radioButton20perCent);
+        tipButtons[3] = findViewById(R.id.radioButton25perCent);
     }
 
     public void tipSwitchClicked(View view) {
@@ -52,8 +51,6 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
-    //TODO
-    // Remove 0% from tip choices as it is irrelevant (tip switch does the same thing)
     public void radioButtonClicked(View view) {
         for (RadioButton button : tipButtons) {
             if (button.isChecked()) {
@@ -71,9 +68,7 @@ public class SettingsActivity extends AppCompatActivity {
             Intent data = new Intent();
             data.putExtra("tipAmount", tipAmount);
             setResult(RESULT_OK, data);
-            finish();
-        } else {
-            finish();
         }
+        finish();
     }
 }
