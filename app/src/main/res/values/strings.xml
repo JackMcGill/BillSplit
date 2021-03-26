@@ -15,4 +15,5 @@
     <string name="_25">25%</string>
     <string name="done">Done</string>
     <string name="per_person"> per person</string>
+    <string name="settings_icon">Settings Icon</string>
 </resources>
