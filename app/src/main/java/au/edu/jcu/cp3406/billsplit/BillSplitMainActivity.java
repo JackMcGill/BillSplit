@@ -33,7 +33,7 @@ public class BillSplitMainActivity extends AppCompatActivity {
         numberOfPeople = findViewById(R.id.numberOfPeople);
         totalPerPersonView = findViewById(R.id.totalPerPerson);
 
-        tipAmount = 0; // Calculating a tip is disabled by default
+        tipAmount = 0; // Calculating/including a tip is disabled by default
 
         if (savedInstanceState == null) {
             bill = new Bill();
@@ -49,6 +49,7 @@ public class BillSplitMainActivity extends AppCompatActivity {
         }
     }
 
+    // Update state with existing values
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -81,12 +82,14 @@ public class BillSplitMainActivity extends AppCompatActivity {
         }
     }
 
+    // Send tipAmount state and user to the settings page
     public void settingsClicked(View view) {
         Intent intent = new Intent(this, SettingsActivity.class);
         intent.putExtra("tipAmount", tipAmount);
         startActivityForResult(intent, SettingsActivity.SETTINGS_REQUEST);
     }
 
+    // Clear the textfields and update the Bill properties to 0
     public void resetButtonClicked(View view) {
         bill.resetBill();
         billAmount.setText("");
@@ -94,9 +97,10 @@ public class BillSplitMainActivity extends AppCompatActivity {
         totalPerPersonView.setText(bill.toString());
     }
 
+    // Calculate amount and display to UI
     public void calculateButtonClicked(View view) {
-
         if (!billAmount.getText().toString().isEmpty()) {
+
             // Get user input from UI
             amount = Integer.parseInt(billAmount.getText().toString());
             people = Integer.parseInt(numberOfPeople.getText().toString());
@@ -105,10 +109,10 @@ public class BillSplitMainActivity extends AppCompatActivity {
             bill.setAmount(amount);
             bill.setNumberOfPeople(people);
 
+            // Output values to the UI
             bill.calculateTotalPerPerson(tipAmount);
             String perPersonString = bill.toString();
             String output;
-
             if (tipAmount > 0) {
                 output = MessageFormat.format("{0}/ person (includes {1}% tip)",
                         perPersonString, tipAmount);

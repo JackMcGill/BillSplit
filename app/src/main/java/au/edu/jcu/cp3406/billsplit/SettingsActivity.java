@@ -28,6 +28,7 @@ public class SettingsActivity extends AppCompatActivity {
         tipSwitch = findViewById(R.id.tipSwitch);
         tipLinearLayout = findViewById(R.id.tipLinearLayout);
 
+        // Get state value
         tipAmount = getIntent().getIntExtra("tipAmount", 0);
 
         tipButtons = new RadioButton[4];
@@ -39,6 +40,7 @@ public class SettingsActivity extends AppCompatActivity {
         updateSwitches();
     }
 
+    // Update switches with state (if there is any) from the main screen
     public void updateSwitches() {
         if (tipAmount > 0) {
             isTipping = true;
@@ -48,6 +50,7 @@ public class SettingsActivity extends AppCompatActivity {
                 button.setEnabled(true);
 
                 String buttonAsString = button.getText().toString();
+
                 // Remove '%' from string to extract the tip amount as an integer
                 buttonAsString = buttonAsString.substring(0, buttonAsString.length() - 1);
 
@@ -58,6 +61,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+    // Enable/disable radio buttons
     public void tipSwitchClicked(View view) {
         if (tipSwitch.isChecked()) {
             tipLinearLayout.setAlpha(1);
@@ -76,6 +80,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+    // Set tipAmount value
     public void radioButtonClicked(View view) {
         for (RadioButton button : tipButtons) {
             if (button.isChecked()) {
@@ -88,6 +93,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+    // Return user (and state values)  to main screen
     public void doneButtonClicked(View view) {
         Intent data = new Intent();
         data.putExtra("tipAmount", tipAmount);
